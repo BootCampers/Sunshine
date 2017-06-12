@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="wallpaper_drawables">
+        <item>@drawable/mercator_projection</item>
+        <item>@drawable/moon</item>
+        <item>@drawable/mollweide_projection</item>
+        <item>@drawable/peters_projection</item>
+        <item>@drawable/dawn_dusk</item>
+        <item>@drawable/equirectangular_projection</item>
+    </integer-array>
+</resources>

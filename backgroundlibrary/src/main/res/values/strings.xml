@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Background Library</string>
+
+    <string-array name="sunshine_modes">
+        <item>Mercarator</item>
+        <item>Moon</item>
+        <item>Moonweide</item>
+        <item>Peters</item>
+        <item>Dawn Dusk</item>
+        <item>Equirectangular</item>
+    </string-array>
+
+    <string-array name="sunshine_description">
+        <item>The Mercator projection used here is one way of looking at the spherical earth as a flat map. Used since the 16th century for navigation, straight lines on this map can be used accurately as compass bearings but the size and shape of continents are distorted. Compare this with Peters, Mollweide or equirectangular projection maps.</item>
+        <item>Moon phase</item>
+        <item>The Mollweide projection is one way of looking at the spherical earth as a flat map. Useful for political maps, it shows the true area of land masses, choosing instead to distort their shape. Compare this with Peters, Mercator or equirectangular projection maps.</item>
+        <item>The Peters projection is one way of looking at the spherical earth as a flat map. Useful for political maps, it shows the true area of land masses, choosing instead to distort their shape. Compare this with Mollweide, Mercator, or equirectangular projection maps.</item>
+        <item>Watch the sun rise and set all over the world on this real-time, computer-generated illustration of the earth\'s patterns of sunlight and darkness. The clouds are updated daily with current weather satellite imagery.</item>
+        <item>Known as a plate carrée or equirectangular projection, this map is one way of looking at the spherical Earth as a flat map. Though it distorts area, shape, and angles, it is often used in computer applications because the X and Y axis map directly to latitude and longitude. Compare this with Mercator, Peters, or Mollweide projection maps.</item>
+    </string-array>
+</resources>
