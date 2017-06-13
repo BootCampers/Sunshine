@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.os.SystemClock;
 
 /**
  * Created by baphna on 6/11/2017.
@@ -12,9 +13,11 @@ import android.content.Intent;
 public class Scheduler {
 
     private static Context mContext;
+    private final AlarmManager mAlarmManager;
 
     public Scheduler(Context mContext) {
         this.mContext = mContext;
+        mAlarmManager = (AlarmManager) mContext.getSystemService(Context.ALARM_SERVICE);
     }
 
     public void scheduleAlarm() {
@@ -23,9 +26,9 @@ public class Scheduler {
                 DiePeriodicAlarmReceiver.REQUEST_CODE,
                 intent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
-        long now = System.currentTimeMillis(); //alarm set right now
-        AlarmManager alarmManager = (AlarmManager) mContext.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, now, /*30000*/AlarmManager.INTERVAL_HOUR,
+        long now = SystemClock.elapsedRealtime(); //alarm set right now
+
+        mAlarmManager.setInexactRepeating(AlarmManager.RTC, now, AlarmManager.INTERVAL_HOUR,
                 pendingIntent);
     }
 
@@ -35,7 +38,6 @@ public class Scheduler {
                 DiePeriodicAlarmReceiver.REQUEST_CODE,
                 intent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
-        AlarmManager alarmManager = (AlarmManager) mContext.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.cancel(pendingIntent);
+        mAlarmManager.cancel(pendingIntent);
     }
 }

@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -24,6 +25,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -98,10 +100,8 @@ public class SelectionActivity extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
-
-        Scheduler scheduler = new Scheduler(this);
-        scheduler.scheduleAlarm();
     }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -140,7 +140,7 @@ public class SelectionActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_selection, container, false);
-            int currentIndex = getArguments().getInt(ARG_SECTION_NUMBER)-1 ;
+            final int currentIndex = getArguments().getInt(ARG_SECTION_NUMBER)-1 ;
             TextView tvDesc = (TextView) rootView.findViewById(R.id.tvDesc);
             tvDesc.setText(getResources()
                     .getStringArray(R.array.sunshine_description)[currentIndex]);
@@ -150,6 +150,23 @@ public class SelectionActivity extends AppCompatActivity {
             ImageView ivSampleWall = (ImageView) rootView.findViewById(R.id.ivSource);
             ivSampleWall.setImageResource(drawablesArray.getResourceId(currentIndex, -1));
             drawablesArray.recycle();
+
+
+            Button btnSelection = (Button) rootView.findViewById(R.id.btnSet);
+            btnSelection.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    SharedPreferences sharedPreferences = getContext()
+                            .getSharedPreferences(Constants.SELECTION, Context.MODE_PRIVATE);
+
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt(Constants.SELECTION, currentIndex);
+                    editor.commit();
+
+                    Scheduler scheduler = new Scheduler(getContext());
+                    scheduler.scheduleAlarm();
+                }
+            });
 
             return rootView;
         }

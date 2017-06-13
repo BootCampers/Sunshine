@@ -13,7 +13,10 @@ public class DiePeriodicAlarmReceiver extends WakefulBroadcastReceiver {
         Intent serviceIntent = new Intent(context, DieIntentService.class);
         context.startService(serviceIntent);
 
-        Scheduler scheduler = new Scheduler(context);
-        scheduler.scheduleAlarm();
+        if (intent.getAction() !=null &&
+                intent.getAction().equals("android.intent.action.BOOT_COMPLETED")) {
+            Scheduler scheduler = new Scheduler(context);
+            scheduler.scheduleAlarm();
+        }
     }
 }

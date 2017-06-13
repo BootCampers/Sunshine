@@ -4,6 +4,7 @@ import android.app.IntentService;
 import android.app.WallpaperManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -72,13 +73,18 @@ public class DieIntentService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        Log.i(Constants.TAG, "Service to get image triggered!");
+        SharedPreferences sharedPreferences = getSharedPreferences(Constants.SELECTION, Context.MODE_PRIVATE);
+        int selection = sharedPreferences.getInt(Constants.SELECTION, 0);
+
+        String url = getResources().getStringArray(R.array.urls)[selection];
+
+        Log.i(Constants.TAG, "Service to get image triggered! " + selection);
         // Release the wake lock provided by the WakefulBroadcastReceiver.
         WakefulBroadcastReceiver.completeWakefulIntent(intent);
 
         Document doc = null;
         try {
-            doc = Jsoup.connect("http://www.die.net/earth/").get();
+            doc = Jsoup.connect(url).get();
             //doc = Jsoup.connect("https://dl.dropboxusercontent.com/u/257493884/le").get();
         } catch (IOException e) {
             Log.e(Constants.TAG, e.getMessage());

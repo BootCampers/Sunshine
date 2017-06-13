@@ -9,6 +9,7 @@ public class Constants {
     public static final String TAG = "Sunshine";
     public static final String WALL = "wall";
     public static final String LOCAL_BROADCAST_STRING = Constants.class.getName();
+    public static final String SELECTION = "selection";
 
     public static final int DAWN = 0;
     public static final int MOON = 1;

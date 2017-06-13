@@ -18,4 +18,13 @@
         <item>Watch the sun rise and set all over the world on this real-time, computer-generated illustration of the earth\'s patterns of sunlight and darkness. The clouds are updated daily with current weather satellite imagery.</item>
         <item>Known as a plate carrée or equirectangular projection, this map is one way of looking at the spherical Earth as a flat map. Though it distorts area, shape, and angles, it is often used in computer applications because the X and Y axis map directly to latitude and longitude. Compare this with Mercator, Peters, or Mollweide projection maps.</item>
     </string-array>
+
+    <string-array name="urls">
+        <item>http://www.die.net/earth/</item>
+        <item>http://www.die.net/moon/</item>
+        <item>https://www.die.net/earth/mollweide.html</item>
+        <item>https://www.die.net/earth/peters.html</item>
+        <item>https://www.die.net/earth/hemisphere.html</item>
+        <item>https://www.die.net/earth/rectangular.html</item>
+    </string-array>
 </resources>
