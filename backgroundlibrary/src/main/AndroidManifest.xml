@@ -12,11 +12,11 @@
         android:label="@string/app_name"
         android:supportsRtl="true">
         <service
-            android:name=".DieIntentService"
+            android:name="org.sunlightmap.backgroundlibrary.DieIntentService"
             android:exported="false" />
 
         <receiver
-            android:name=".DiePeriodicAlarmReceiver"
+            android:name="org.sunlightmap.backgroundlibrary.DiePeriodicAlarmReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter>

@@ -1,4 +1,4 @@
-package android.sunlightmap.org.backgroundlibrary;
+package org.sunlightmap.backgroundlibrary;
 
 import android.app.IntentService;
 import android.app.WallpaperManager;
@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.sunlightmap.org.backgroundlibrary.R;
 import android.support.v4.content.WakefulBroadcastReceiver;
 import android.util.Log;
 
@@ -73,9 +74,8 @@ public class DieIntentService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        SharedPreferences sharedPreferences = getSharedPreferences(Constants.SELECTION, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(Constants.PREFERENCES, Context.MODE_PRIVATE);
         int selection = sharedPreferences.getInt(Constants.SELECTION, 0);
-
         String url = getResources().getStringArray(R.array.urls)[selection];
 
         Log.i(Constants.TAG, "Service to get image triggered! " + selection);

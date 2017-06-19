@@ -1,4 +1,4 @@
-package android.sunlightmap.org.backgroundlibrary;
+package org.sunlightmap.backgroundlibrary;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;

@@ -1,4 +1,4 @@
-package android.sunlightmap.org.sunlightmap;
+package org.sunlighmap.mobileapp;
 
 import android.app.WallpaperManager;
 import android.content.BroadcastReceiver;
@@ -11,8 +11,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.sunlightmap.org.backgroundlibrary.Constants;
-import android.sunlightmap.org.backgroundlibrary.Scheduler;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -23,6 +21,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -30,7 +30,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.sunlightmap.backgroundlibrary.Constants;
+import org.sunlightmap.backgroundlibrary.Scheduler;
+import org.sunlightmap.mobileapp.R;
+
 import java.io.IOException;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class SelectionActivity extends AppCompatActivity {
 
@@ -157,14 +163,17 @@ public class SelectionActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     SharedPreferences sharedPreferences = getContext()
-                            .getSharedPreferences(Constants.SELECTION, Context.MODE_PRIVATE);
+                            .getSharedPreferences(Constants.PREFERENCES, Context.MODE_PRIVATE);
 
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putInt(Constants.SELECTION, currentIndex);
+                    editor.putBoolean(Constants.APP_ON, true);
                     editor.commit();
 
                     Scheduler scheduler = new Scheduler(getContext());
                     scheduler.scheduleAlarm();
+
+                    Toast.makeText(getActivity(), "All set for updates!", Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -199,5 +208,53 @@ public class SelectionActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             return getResources().getStringArray(R.array.sunshine_modes)[position];
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_selection, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_turn_off) {
+            new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                    .setTitleText("Are you sure?")
+                    .setContentText("Turn off wallpaper updates! Hit back to cancel!")
+                    .setConfirmText("Yes,turn OFF!")
+                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+                            sDialog.dismissWithAnimation();
+                            SharedPreferences sharedPreferences = getSharedPreferences(Constants.PREFERENCES, Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putBoolean(Constants.APP_ON, false);
+                            editor.commit();
+                            Toast.makeText(getApplicationContext(), R.string.msg_turn_off, Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+                            sDialog.dismissWithAnimation();
+                        }
+                    })
+                    .show();
+        } else if(id == R.id.action_info) {
+            new SweetAlertDialog(this, SweetAlertDialog.NORMAL_TYPE)
+                    .setTitleText("About")
+                    .setContentText(getResources().getString(R.string.msg_about))
+                    .setConfirmText("Close")
+                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+                            sDialog.dismissWithAnimation();
+                        }
+                    })
+                    .show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
     defaultConfig {
-        applicationId "android.sunlightmap.org.sunlightmap"
+        applicationId "org.sunlightmap.mobileapp"
         minSdkVersion 19
         targetSdkVersion 25
         versionCode 1
@@ -17,6 +17,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    repositories {
+        mavenCentral()
+    }
 }
 
 dependencies {
@@ -24,4 +27,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:design:25.3.1'
     compile project(':backgroundlibrary')
+    compile 'cn.pedant.sweetalert:library:1.3'
 }
