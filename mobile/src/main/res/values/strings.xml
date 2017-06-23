@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Sunlight Live Wallpaper</string>
-    <string name="menu_off">Settings</string>
+    <string name="menu_off">Turn OFF</string>
+    <string name="menu_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="msg_set_wallpaper">Choose this Live Wallpaper</string>
     <string name="msg_turn_off">Turned off!</string>
@@ -12,4 +13,30 @@
         button to turn it ON back.\n App will fetch data every hour to give you best and updated
         wallpapers each time.\n\nImages courtesy: die.net.
     </string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+    <string name="pref_title_sync_on_wifi">Sync ONLY on WiFi</string>
+    <string name="pref_description_sync_wifi">Download the latest images only if device
+        is in Wifi coverage. If OFF then it will consume mobile data but updates the wallpapers at
+        chosen interval.
+    </string>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+
+    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+    </string-array>
+
+    <string-array name="multi_select_list_preference_default_value" />
+
 </resources>

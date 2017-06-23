@@ -3,15 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="android.sunlightmap.org.sunlightmap.org.sunlighmap.mobileapp.SelectionActivity">
     <item
+        android:id="@+id/action_info"
+        android:orderInCategory="99"
+        android:icon="@drawable/ic_info"
+        app:showAsAction="always"
+        android:title="@string/menu_about"/>
+    <item
         android:id="@+id/action_turn_off"
         android:orderInCategory="100"
         android:icon="@drawable/ic_power_off"
         app:showAsAction="always"
         android:title="@string/menu_off"/>
     <item
-        android:id="@+id/action_info"
-        android:orderInCategory="99"
-        android:icon="@drawable/ic_info"
+        android:id="@+id/action_settings"
+        android:orderInCategory="101"
+        android:icon="@drawable/ic_settings"
         app:showAsAction="always"
-        android:title="@string/menu_about"/>
+        android:title="@string/menu_settings"/>
 </menu>

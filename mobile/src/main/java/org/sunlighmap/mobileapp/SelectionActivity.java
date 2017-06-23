@@ -33,6 +33,7 @@ import android.widget.Toast;
 import org.sunlightmap.backgroundlibrary.Constants;
 import org.sunlightmap.backgroundlibrary.Scheduler;
 import org.sunlightmap.mobileapp.R;
+import org.sunlightmap.mobileapp.SettingsActivity;
 
 import java.io.IOException;
 
@@ -254,6 +255,8 @@ public class SelectionActivity extends AppCompatActivity {
                         }
                     })
                     .show();
+        } else if(id == R.id.action_settings) {
+            startActivity(new Intent(SelectionActivity.this, SettingsActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }
