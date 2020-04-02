@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SunlightMap.iml" filepath="$PROJECT_DIR$/SunlightMap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Sunshine.iml" filepath="$PROJECT_DIR$/Sunshine.iml" />
       <module fileurl="file://$PROJECT_DIR$/backgroundlibrary/backgroundlibrary.iml" filepath="$PROJECT_DIR$/backgroundlibrary/backgroundlibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/mobile/mobile.iml" filepath="$PROJECT_DIR$/mobile/mobile.iml" />
     </modules>
