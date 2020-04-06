@@ -1,1 +1,1 @@
-include ':mobile', ':backgroundlibrary'
+include ':mobile'

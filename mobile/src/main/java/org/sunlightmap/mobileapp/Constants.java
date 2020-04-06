@@ -1,4 +1,4 @@
-package org.sunlightmap.backgroundlibrary;
+package org.sunlightmap.mobileapp;
 
 /**
  * Created by baphna on 6/11/2017.
